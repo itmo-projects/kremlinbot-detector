@@ -7,7 +7,7 @@ from kafka.producer.kafka import KafkaProducer
 
 from collector.extraction import get_comment_data_list
 from common.utils import get_vk_api
-from config import kafka_config
+from kafka.config import kafka_config
 
 GROUP_REGEX = r'^https://vk.com/(.+)'
 MAX_COUNT = 100
@@ -16,7 +16,7 @@ MAX_OFFSET = 1000
 
 def main():
     consumer = KafkaConsumer(
-        kafka_config.net_input_topic,
+        kafka_config.link_topic,
         bootstrap_servers=kafka_config.bootstrap_server,
         value_deserializer=bytes.decode
     )

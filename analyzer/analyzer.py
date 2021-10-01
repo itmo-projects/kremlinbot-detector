@@ -3,8 +3,8 @@ import datetime
 import json
 import pandas as pd
 
-from kafka import KafkaConsumer
-from kafka.producer.kafka import KafkaProducer
+from kafka import KafkaConsumer, KafkaProducer
+from kafka.config import kafka_config
 
 from analyzer.predict import get_answer
 from collector.comment_data import COMMENT_DATA_X
@@ -14,7 +14,7 @@ MODEL_PATH = '../resources/mystem_nltk-stopwords_badwords_RandomForestClassifier
 
 def main():
     consumer = KafkaConsumer(
-        kafka_config.net_input_topic,
+        kafka_config.comment_topic,
         bootstrap_servers=kafka_config.bootstrap_server,
         value_deserializer=bytes.decode
     )

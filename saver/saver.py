@@ -2,6 +2,7 @@ from kafka.consumer import KafkaConsumer
 from pymongo import MongoClient
 from clickhouse_driver import Client, connect
 import json
+from kafka.config import kafka_config
 
 
 # from somewhere import kafka_config
@@ -22,7 +23,7 @@ def create_client():
 
 if __name__ == "__main__":
     consumer = KafkaConsumer(
-        kafka_config.net_output_topic,
+        kafka_config.comment_topic,
         bootstrap_servers=[kafka_config.bootstrap_server],
         auto_offset_reset="earliest",
         enable_auto_commit=True,

@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from kafka.producer.kafka import KafkaProducer
+from kafka.config import kafka_config
+from kafka import KafkaProducer
 import json
 import uvicorn
 
